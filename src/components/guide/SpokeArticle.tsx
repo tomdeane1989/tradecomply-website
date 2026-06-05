@@ -8,6 +8,7 @@ import { Breadcrumbs } from "./Breadcrumbs";
 import { LastReviewed } from "./LastReviewed";
 import { TableOfContents } from "./TableOfContents";
 import { RelatedGuides } from "./RelatedGuides";
+import { Sources } from "./Sources";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FAQJsonLd } from "@/components/seo/FAQJsonLd";
@@ -53,7 +54,10 @@ export async function SpokeArticle({ guide }: { guide: Guide }) {
                   {frontmatter.description}
                 </p>
                 <div className="mt-4">
-                  <LastReviewed date={frontmatter.lastUpdated} meta={readingTime} />
+                  <LastReviewed
+                    date={frontmatter.lastUpdated}
+                    meta={`By the TradeComply desk · ${readingTime}`}
+                  />
                 </div>
               </header>
 
@@ -65,6 +69,8 @@ export async function SpokeArticle({ guide }: { guide: Guide }) {
               )}
 
               <div className="prose">{mdxContent}</div>
+
+              <Sources sources={frontmatter.sources} />
 
               <RelatedGuides pillar={pillar} siblings={siblings} />
 

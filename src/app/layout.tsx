@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s | TradeComply",
   },
   description:
-    "Independent, no-upsell guidance on UK construction accreditation schemes — CHAS, SafeContractor, Constructionline and SSIP. What they cost, what they cover, which one your tender needs.",
+    "Independent, no-upsell guidance on UK construction accreditation — CHAS, SafeContractor, Constructionline, SSIP. What each costs and which you need.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },

@@ -5,7 +5,7 @@ import { Waitlist } from "@/components/Waitlist";
 export const metadata: Metadata = {
   title: "The tool we're building for subcontractors",
   description:
-    "TradeComply is building a compliance tracker for UK subcontractors — renewal deadlines, a reusable evidence vault, and the non-recognised tiers DtS doesn't cover. Join the waitlist.",
+    "We're building a compliance tracker for UK subcontractors: renewal reminders, an evidence vault, and the tiers mutual recognition misses. Join the list.",
   alternates: { canonical: "/product" },
 };
 

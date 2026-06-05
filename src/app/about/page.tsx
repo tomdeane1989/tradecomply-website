@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About TradeComply — independent accreditation guidance",
   description:
-    "Why TradeComply exists: a neutral, ad-free source on UK construction accreditation schemes, with no done-for-you upsell. How we keep our figures honest and current.",
+    "Why TradeComply exists: a neutral, ad-free source on UK construction accreditation — no done-for-you upsell. How we keep our figures honest and current.",
   alternates: { canonical: "/about" },
 };
 

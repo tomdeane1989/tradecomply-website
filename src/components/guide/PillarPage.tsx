@@ -8,9 +8,18 @@ import { absoluteUrl, breadcrumbsFor, guideUrl } from "@/lib/guides";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { LastReviewed } from "./LastReviewed";
 import { TableOfContents } from "./TableOfContents";
+import { Sources } from "./Sources";
+import { KeyTerms } from "./KeyTerms";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FAQJsonLd } from "@/components/seo/FAQJsonLd";
 import { Waitlist } from "@/components/Waitlist";
+
+// Which glossary terms to surface on each hub's "Key terms" box.
+const KEY_TERMS_BY_HUB: Record<Pillar, string[]> = {
+  compare: ["ssip", "chas", "safecontractor", "constructionline", "cas", "dts"],
+  ssip: ["ssip", "dts", "cas", "chas", "safecontractor"],
+  documents: ["ssip", "chas", "rams", "dts"],
+};
 
 export async function PillarPage({ guide }: { guide: Guide }) {
   const { frontmatter, content } = guide;
@@ -21,6 +30,7 @@ export async function PillarPage({ guide }: { guide: Guide }) {
   const spokes = getSpokesForPillar(hub);
   const faqs = extractFaq(content);
   const crumbs = breadcrumbsFor(guide);
+  const termKeys = KEY_TERMS_BY_HUB[hub] ?? [];
 
   return (
     <>
@@ -41,9 +51,14 @@ export async function PillarPage({ guide }: { guide: Guide }) {
                   {frontmatter.description}
                 </p>
                 <div className="mt-4">
-                  <LastReviewed date={frontmatter.lastUpdated} />
+                  <LastReviewed
+                    date={frontmatter.lastUpdated}
+                    meta="By the TradeComply desk"
+                  />
                 </div>
               </header>
+
+              {termKeys.length > 0 && <KeyTerms termKeys={termKeys} />}
 
               {tocItems.length > 0 && (
                 <div className="mb-8 rounded-xl border p-4 lg:hidden border-[var(--color-hair)] bg-[var(--color-surface)]">
@@ -77,6 +92,8 @@ export async function PillarPage({ guide }: { guide: Guide }) {
                   </div>
                 </section>
               )}
+
+              <Sources sources={frontmatter.sources} />
 
               <div className="mt-10">
                 <Waitlist source={`pillar-${frontmatter.slug}`} />
