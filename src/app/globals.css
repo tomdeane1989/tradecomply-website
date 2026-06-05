@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/*
+  Design system ported verbatim from the approved mockups
+  (~/Projects/tradecomply/TradeComply-Compare.html — "Direction A — Petrol").
+  Colours kept in the original oklch; semantic accents kept as the mockup hex.
+*/
+@theme inline {
+  /* Brand — petrol teal */
+  --color-primary: oklch(0.33 0.045 196);
+  --color-primary-d: oklch(0.26 0.04 198);
+  --color-primary-l: oklch(0.42 0.05 196);
+
+  /* Accent — gold */
+  --color-accent: oklch(0.81 0.155 82);
+  --color-accent-d: oklch(0.74 0.15 78);
+
+  /* Surfaces */
+  --color-bg: oklch(0.985 0.004 120);
+  --color-surface: #ffffff;
+  --color-row-alt: oklch(0.967 0.006 190);
+
+  /* Text ramp */
+  --color-ink: oklch(0.24 0.012 220);
+  --color-ink-soft: oklch(0.36 0.012 220);
+  --color-mid: oklch(0.52 0.012 220);
+  --color-faint: oklch(0.7 0.01 220);
+
+  /* Hairlines */
+  --color-hair: oklch(0.9 0.006 200);
+  --color-hair-soft: oklch(0.94 0.005 200);
+
+  /* Semantic — warnings / watch-outs */
+  --color-warn: #b3471a;
+  --color-warn-bg: #fbf0e9;
+  --color-warn-bd: #f0d6c7;
+
+  /* Semantic — cost / money figures */
+  --color-cost: #8a6500;
+  --color-cost-bg: #fbf4dc;
+  --color-cost-bd: #f0e3b5;
+
+  /* "In plain English" callout */
+  --color-plain-bg: oklch(0.965 0.013 196);
+  --color-plain-bd: oklch(0.9 0.02 196);
+
+  /* Positive (yes) pill */
+  --color-go: #2e9e5b;
+
+  /* Fonts — variables set by next/font in layout.tsx */
+  --font-head: var(--font-sora), system-ui, sans-serif;
+  --font-body: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Layout widths */
+  --maxw: 1080px;
+  --readw: 760px;
+}
+
+/* ── Base ───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-head);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* ── Prose — scoped to rendered MDX article body ─────── */
+.prose {
+  max-width: var(--readw);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose h2 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(24px, 4.2vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin: 52px 0 16px;
+  scroll-margin-top: 88px;
+}
+
+.prose h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.25;
+  color: var(--color-ink);
+  margin: 36px 0 12px;
+  scroll-margin-top: 88px;
+}
+
+.prose p {
+  margin: 0 0 20px;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 20px;
+  padding-left: 1.4rem;
+}
+
+.prose li {
+  margin-bottom: 8px;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--color-accent);
+}
+
+.prose a:hover {
+  color: var(--color-primary-d);
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  margin: 1.75rem 0;
+  color: var(--color-ink-soft);
+  font-style: italic;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-row-alt);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-hair);
+  margin: 2.5rem 0;
+}
+
+/* Anchor links injected by rehype-autolink-headings (behavior: 'wrap') */
+.prose h2 a,
+.prose h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Markdown tables inside prose (non-ComparisonTable) */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 15px;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--color-hair);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose thead th {
+  background: var(--color-row-alt);
+  font-family: var(--font-head);
+}
